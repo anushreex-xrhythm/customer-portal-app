@@ -1,31 +1,127 @@
 .navbar {
+  background: white;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: var(--spacing-3) 0;
+}
+
+.navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #222;
-  color: #fff;
-  padding: 1rem 2rem;
 }
 
-.navbar-logo {
-  font-weight: bold;
-  font-size: 1.2rem;
+.navbar-logo a {
+  text-decoration: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.logo-icon {
+  background: var(--primary);
+  color: white;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.logo-text {
+  font-weight: 600;
+  font-size: var(--font-size-lg);
+  color: var(--dark);
 }
 
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: var(--spacing-6);
+  align-items: center;
   margin: 0;
   padding: 0;
 }
 
 .navbar-links li a {
-  color: #fff;
+  color: var(--gray-700);
   text-decoration: none;
-  transition: color 0.2s;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+  font-size: var(--font-size-base);
 }
 
 .navbar-links li a:hover {
-  color: #4caf50;
+  color: var(--primary);
+}
+
+.btn-nav {
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--gray-700);
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 var(--spacing-4);
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .navbar-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: var(--spacing-4);
+    background: white;
+    padding: var(--spacing-6);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-150%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .navbar-links.mobile-active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  .nav-button {
+    width: 100%;
+  }
+  
+  .btn-nav {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
 } 
